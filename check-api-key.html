@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Check API Key Storage</title>
+</head>
+<body>
+    <h1>API Key Storage Check</h1>
+    <button onclick="checkKey()">Check Stored Key</button>
+    <button onclick="clearKey()">Clear Stored Key</button>
+    <pre id="output"></pre>
+    
+    <script>
+        function checkKey() {
+            const key = localStorage.getItem('gemini_api_key');
+            const output = document.getElementById('output');
+            if (key) {
+                output.textContent = 'Key found: ' + key.substring(0, 10) + '...' + key.substring(key.length - 5);
+            } else {
+                output.textContent = 'No key stored';
+            }
+        }
+        
+        function clearKey() {
+            localStorage.removeItem('gemini_api_key');
+            alert('Key cleared! Refresh the page to enter a new one.');
+        }
+    </script>
+</body>
+</html>
